@@ -9,6 +9,11 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use('/api', routes);
 
+// Test route
+app.get('/', (req, res) => {
+  res.send('API is running');
+});
+
 // Sync Sequelize models with the database
 sequelize.sync({ force: false }).then(() => {
   console.log('Database synced');
@@ -18,3 +23,5 @@ sequelize.sync({ force: false }).then(() => {
 }).catch(err => {
   console.error('Unable to sync database:', err);
 });
+
+module.exports = app;
