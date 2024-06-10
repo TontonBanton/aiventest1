@@ -20,8 +20,8 @@ router.post('/users', async (req, res) => {
     const user = await User.create({ name, email, password });
     res.status(201).json(user);
   } catch (err) {
-    console.error('Error creating user:', err);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error creating user:', err); // Log the full error
+    res.status(500).json({ error: err.message }); // Send error message to the client
   }
 });
 
