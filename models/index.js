@@ -3,36 +3,18 @@ const config = require('../config/config.js')[process.env.NODE_ENV || 'developme
 
 const sequelize = new Sequelize(config.database, config.username, config.password, {
   host: config.host,
-  dialect: 'mysql',
-  dialectModule: require('mysql2'),
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
-  },
-  dialectOptions: {
-    connectTimeout: 60000
-  },
-  retry: {
-    max: 5,
-    match: [
-      /ETIMEDOUT/,
-      /EHOSTUNREACH/,
-      /ECONNREFUSED/,
-      /ECONNRESET/,
-      /ENOTFOUND/
-    ],
-    backoffBase: 1000,
-    backoffExponent: 1.5
-  },
-  logging: console.log // Add this line to log Sequelize operations
+  dialect: config.dialect,
+  dialectModule: config.dialectModule,
+  pool: config.pool,
+  dialectOptions: config.dialectOptions,
+  retry: config.retry,
+  logging: console.log // Add this to log Sequelize operations
 });
 
 const db = {
   sequelize,
   Sequelize,
-  User: require('./user')(sequelize, Sequelize),
+  User: require('./user')(sequelize, Sequelize), // Adjust the path to your user model
 };
 
 sequelize.authenticate()
