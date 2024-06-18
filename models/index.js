@@ -18,14 +18,32 @@ const db = {
   User: require('./user')(sequelize, Sequelize), // Adjust the path to your user model
 };
 
+// Synchronize all models
+sequelize.sync({ force: false }) // force: true will drop the table if it already exists
+  .then(() => {
+    console.log('Database synchronized');
+  })
+  .catch(err => {
+    console.error('Error synchronizing database:', err.message);
+    console.error('Stack:', err.stack);
+    if (err.parent) {
+      console.error('Parent Error:', err.parent.message);
+      console.error('Parent Stack:', err.parent.stack);
+    }
+  });
+
+// Authenticate to check the connection
 sequelize.authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
   })
   .catch(err => {
     console.error('Unable to connect to the database:', err.message);
-    console.error(err.stack);
-    console.error('Parent Error:', err.parent ? err.parent.message : 'N/A');
+    console.error('Stack:', err.stack);
+    if (err.parent) {
+      console.error('Parent Error:', err.parent.message);
+      console.error('Parent Stack:', err.parent.stack);
+    }
   });
 
 module.exports = db;
