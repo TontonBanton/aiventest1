@@ -22,8 +22,5 @@ module.exports = {
       acquire: 30000,
       idle: 10000,
     },
-    dialectOptions: {
-      connectTimeout: 60000, // 60 seconds
-    },
   },
 };
