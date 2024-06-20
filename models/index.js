@@ -6,9 +6,6 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
   port: config.port,
   dialect: 'mysql',
   dialectModule: require('mysql2'),
-  pool: config.pool,
-  dialectOptions: config.dialectOptions,
-  retry: config.retry,
   logging: console.log, // Enable logging for debugging purposes
 });
 

@@ -6,7 +6,8 @@ module.exports = {
     password: "13ulas43",
     database: "aiventest",
     host: "localhost",
-    dialect: 'mysql'
+    dialect: 'mysql',
+    dialectModule: require('mysql2')
   },
   production: {
     username: process.env.DB_USERNAME,
@@ -15,12 +16,6 @@ module.exports = {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT || 3306, // Default to 3306 if DB_PORT is not set
     dialect: 'mysql',
-    dialectModule: require('mysql2'),
-    pool: {
-      max: 5,
-      min: 0,
-      acquire: 30000,
-      idle: 10000,
-    },
+    dialectModule: require('mysql2')
   },
 };
