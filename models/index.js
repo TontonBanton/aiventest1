@@ -32,18 +32,4 @@ sequelize.sync({ force: false }) // force: true will drop the table if it alread
     }
   });
 
-// Authenticate to check the connection
-sequelize.authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err.message);
-    console.error('Stack:', err.stack);
-    if (err.parent) {
-      console.error('Parent Error:', err.parent.message);
-      console.error('Parent Stack:', err.parent.stack);
-    }
-  });
-
 module.exports = db;
