@@ -13,9 +13,6 @@ app.use('/api', routes);
 app.get('/', (req, res) => {
   res.send('API is running');
 });
-app.get('/test', (req, res) => {
-  res.send('API is running v1');
-});
 
 // Sync Sequelize models with the database
 sequelize.sync({ force: false }).then(() => {
