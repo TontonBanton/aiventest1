@@ -18,18 +18,4 @@ const db = {
   User: require('./user.js')(sequelize, Sequelize), // Adjust the path to your user model
 };
 
-// Synchronize all models
-sequelize.sync({ force: false }) // force: true will drop the table if it already exists
-  .then(() => {
-    console.log('Database synchronized');
-  })
-  .catch(err => {
-    console.error('Error synchronizing database:', err.message);
-    console.error('Stack:', err.stack);
-    if (err.parent) {
-      console.error('Parent Error:', err.parent.message);
-      console.error('Parent Stack:', err.parent.stack);
-    }
-  });
-
 module.exports = db;
