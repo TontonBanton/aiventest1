@@ -25,17 +25,5 @@ module.exports = {
     dialectOptions: {
       connectTimeout: 60000, // 60 seconds
     },
-    retry: {
-      max: 5,
-      match: [
-        /ETIMEDOUT/,
-        /EHOSTUNREACH/,
-        /ECONNREFUSED/,
-        /ECONNRESET/,
-        /ENOTFOUND/
-      ],
-      backoffBase: 1000, // Initial backoff duration in ms
-      backoffExponent: 1.5, // Exponential backoff factor
-    },
   },
 };
