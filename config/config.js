@@ -16,6 +16,6 @@ module.exports = {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT || 3306, // Default to 3306 if DB_PORT is not set
     dialect: 'mysql',
-    dialectModule: require('mysql2')
+    //dialectModule: require('mysql2')
   },
 };
