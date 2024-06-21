@@ -1,22 +1,18 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const { sequelize } = require('./models');
-const routes = require('./routes');
-
 const app = express();
-const PORT = process.env.PORT || 3000;
 
+const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+
+//Routes
+const routes = require('./routes');
 app.use('/api', routes);
 
-// Test route
-app.get('/', (req, res) => {
-  res.send('API is running');
-});
+//Database
+const { sequelize } = require('./models');
+const PORT = process.env.PORT || 3000;
 
-// Sync Sequelize models with the database
 sequelize.sync({ force: false }).then(() => {
-  console.log('Database synced');
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
