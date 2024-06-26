@@ -6,7 +6,7 @@ app.use(bodyParser.json());
 
 // Test
 app.get('/', (req, res) => {
-  res.send('API is running');
+  res.send('244');
 });
 
 //Routes
