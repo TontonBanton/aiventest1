@@ -1,8 +1,6 @@
 const { Sequelize } = require('sequelize');
 const config = require('../config/config.js')[process.env.NODE_ENV || 'development'];
 
-console.log('Database configuration:', config);
-
   const sequelize = new Sequelize(config.database, config.username, config.password, {
     host: config.host,
     port: config.port,
