@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('../models');
+const { Users } = require('../models');
 
 // Get all users
 router.get('/users', async (req, res) => {
   try {
-    const users = await User.findAll();
+    const users = await Users.findAll();
     res.json(users);
   } catch (err) {
     console.error('Error fetching users:', err);
@@ -16,8 +16,8 @@ router.get('/users', async (req, res) => {
 // Create a new user
 router.post('/users', async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    const user = await User.create({ name, email, password });
+    const { username, email, password } = req.body;
+    const user = await Users.create({ username, email, password });
     res.status(201).json(user);
   } catch (err) {
     console.error('Error creating user:', err); // Log the full error

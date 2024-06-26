@@ -15,7 +15,7 @@ app.use('/api', routes);
 
 //Database
 const { sequelize } = require('./models');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
