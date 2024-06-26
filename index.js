@@ -4,6 +4,11 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+// Test
+app.get('/', (req, res) => {
+  res.send('API is running');
+});
+
 //Routes
 const routes = require('./routes');
 app.use('/api', routes);

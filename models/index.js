@@ -5,7 +5,7 @@ const config = require('../config/config.js')[process.env.NODE_ENV || 'developme
     host: config.host,
     port: config.port,
     dialect: 'mysql',
-    //dialectModule: require('mysql2'),
+    dialectModule: require('mysql2'),
     logging: console.log, // Enable logging for debugging purposes
   });
 
